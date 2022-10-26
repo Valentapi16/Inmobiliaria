@@ -1,5 +1,6 @@
 package model;
 
-public class TypePhone {
+enum TypePhone {
+    HOME, OFFICE,MOVIL,FAMILY, OTHER;
     
 }
