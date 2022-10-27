@@ -61,7 +61,10 @@ public class Main{
 	}
 	public void executeOption(int option){
 		String msj, fullName,idBuilding, location, bankName = "";  
-		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony,contactNumber,countNumber = 0;
+		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony,countNumber = 0;
+		// voy a cambiar el tipo de dato con el que representas el contactNumber, por un long 
+		// que es un valor entero ... pero mas grande. 
+		long contactNumber = 0;
 		boolean isThereBalcony = false;
 
 
@@ -82,6 +85,7 @@ public class Main{
 				idBuilding = reader.next();
 				System.out.println("Enter the apartment id:");
 				idApartment = validateIntegerOption();
+				System.out.println(idApartment);
 				if(idApartment<0){
 					System.out.println("enter a valid option.... xD"); 
 					break;
@@ -135,10 +139,13 @@ public class Main{
                System.out.println("Digit the typeId, 1 CC, 2 NIT, 3 NIP, 4 CE, 5 Other"); 
                 typeId= validateIntegerOption(); 
 
-                if(typeId >5 || typeId <=0){
+                if(typeId > 5 || typeId <=0){
                 System.out.println("Only valid options\n");
                 break;
                 }
+				// acá, estas pidiendo un id que entiendo yo es el id del owner
+				// en el constructor del owner el id es un String no un entero acá hay una 
+				// incosistencia con los tipos de datos. 
 				System.out.println("Digit the identification number: ");
 				id = validateIntegerOption();
 
@@ -149,8 +156,14 @@ public class Main{
 				}
 				System.out.println("Which is the name of the owner: \n");
 				fullName = reader.next();
+				// acá pasa lo mismo, le pides el número de contacto y lo validas como
+				// un entero pero en el constructor es un String 
+				// Ahora, el error que me manifiestas es porque el tipo de dato con el que 
+				// representas la información es un int, y el valor que le pasas por consola 
+				// (de mas de 10 digitos) es muy pequeño para poder representarlo 
+				// por eso usamos un valor entero mas grande, un long 
 				System.out.println("Digit the contact number:");
-				contactNumber = validateIntegerOption();
+				contactNumber = validateLongOption();
 
 				if(contactNumber<0){
 					System.out.println("Only valid options"); 
@@ -188,6 +201,8 @@ public class Main{
 				
 	
 				msj = realState.registerOwnerToApartment(typeId, idBuilding, fullName, fullName, typePhone, location, bankName, idBuilding, idApartment);
+				// estas pasando dos veces el atributu idBuilding, el owner debería recivir un String id,
+				// en el segundo párametro 
 				realState.createOwner(typeId, idBuilding, fullName, fullName, typePhone, location, bankName, idBuilding, idApartment);
 				
 				System.out.println(msj);
@@ -297,6 +312,24 @@ public class Main{
 
 		if(reader.hasNextInt()){
 			option = reader.nextInt(); 
+		}
+		else{
+ 
+			reader.nextLine(); 
+			option = -1; 
+		}
+
+		return option; 
+	}
+
+
+	// este método valida si la entrada del 
+	// reader es un tipo de dato long 
+	public long validateLongOption(){
+		long option = 0; 
+
+		if(reader.hasNextLong()){
+			option = reader.nextLong(); 
 		}
 		else{
  
