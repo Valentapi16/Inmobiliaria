@@ -56,15 +56,12 @@ public class Main{
 				"5. consult how many apartments are available in a building.\n" +
 				"6. consult the monthly value to receive for the rented apartments in a building.\n" +
 				"7. consult if a particular apartment is available.\n" +
-				"8. consult the number of apartments that a person has leased.\n" +
-				"9. consult the total rental value a landlord would receive for the apartments he owns.\n" +
 				"0. Exit. "; 
 
 	}
 	public void executeOption(int option){
 		String msj, fullName,idBuilding, location, bankName = "";  
 		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony,contactNumber,countNumber = 0;
-		int cellphoneType=0; 
 		boolean isThereBalcony = false;
 
 
@@ -209,20 +206,20 @@ public class Main{
 				id = validateIntegerOption();
 
 				if(id<0){
-					System.out.println("enter a valid option.... xD"); 
+					System.out.println("Only valid options"); 
 					break;
 
 				}
-				System.out.println("type the tenant name ");
+				System.out.println("Write the tenants name: ");
 				fullName = reader.next();
-				System.out.println("Type cellphone number");
+				System.out.println("Digit contact number");
 				contactNumber = validateIntegerOption();
 				if(contactNumber<0){
-					System.out.println("enter a valid option.... xD"); 
+					System.out.println("Only valid options"); 
 					break;
 
 				}
-				System.out.println("type the cellphone type, 1 home, 2 office, 3 movil, 4 family, 5 other"); 
+				System.out.println("Digit the phone type, 1 home, 2 office, 3 movil, 4 family, 5 other"); 
 				typePhone= validateIntegerOption(); 
 
 				if(typePhone >5 || typePhone <=0){
@@ -232,11 +229,11 @@ public class Main{
 
 				System.out.println("type the building id where is the apartment");
 				idBuilding= reader.next();
-				System.out.println("type the apartment id.");
+				System.out.println("Digit the apartment id: ");
 				idApartment = validateIntegerOption();
 
 				if(idApartment<0){
-					System.out.println("enter a valid option.... xD"); 
+					System.out.println("Only valid options"); 
 					break;
 
 				}
@@ -246,8 +243,8 @@ public class Main{
 				break;
 
 			case 5:
-             System.out.println("number of apartments available\n");
-             System.out.println("type id building");
+             System.out.println("This is the option for the amount of apartments available\n");
+             System.out.println("Digit id building");
              idBuilding = reader.next(); 
 
              msj = realState.availableApartments(idBuilding);
@@ -284,15 +281,6 @@ public class Main{
 				
 
 				break;
-
-			case 8: 
-			
-				break; 
-
-			case 9:
-				
-
-				break; 
 
 			case 0: 
 				System.out.println("Exit program.");

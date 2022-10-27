@@ -215,37 +215,6 @@ public class RealState {
 		return msj; 
 
  	}
-
- 	public int apartmentForOwner(int document){
- 		int count =0; 
- 		for(int i =0; i <ALL_APARTMENTS; i++){
- 			if(allApartments[i] != null && allApartments[i].getTenant() != null && allApartments[i].getOwner().getTypeId() == document){
- 				count++; 
-
- 			}
- 		}
-
- 		return count; 
- 	}
-
- 	public String totalRentalForOwner(int document){
- 		String msj = ""; 
- 		double price =0.0; 
- 		for(int i =0; i<ALL_APARTMENTS; i++){
-			if(allApartments[i].getOwner() != null){
-				System.out.println(allApartments[i].getOwner().getTypeId());
-				
-			}
-
- 			if(allApartments[i] != null && allApartments[i].getOwner() != null && allApartments[i].getOwner().getTypeId() == document){
- 				price += allApartments[i].getMonthlyValue();
- 			}
- 		}
- 		price = price * 0.9;
- 		msj = "the total lease value the owner would receive is  " + price;
-
- 		return msj; 
- 	}
     
 
 }
