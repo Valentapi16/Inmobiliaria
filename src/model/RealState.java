@@ -200,12 +200,7 @@ public class RealState {
 		
 		return msj;
  	}
- 	/**
-	 * avalibleApartment: say if a specific apartment is available or not . 
-	 * @param idBuilding: String: the building id.
-	 * @param idApartment: int: is the id of the apartment.
-	 * @return msj: String: a confirm message.
-	 */
+
 
  	public String avalibleApartment(String idBuilding, int idApartment){
 
@@ -220,11 +215,6 @@ public class RealState {
 		return msj; 
 
  	}
- 	/**
-	 * apartmentForOwner: the number of apartments a specific owner has . 
-	 * @param document: int: this is the id of the owner.
-	 * @return count: int: a int valor.
-	 */
 
  	public int apartmentForOwner(int document){
  		int count =0; 
@@ -237,11 +227,6 @@ public class RealState {
 
  		return count; 
  	}
- 	/**
-	 * totalRentalForOwner: the amount of money you receive for owner apartments in specific . 
-	 * @param document: int: this is the id of the owner.
-	 * @return msj: a message.
-	 */
 
  	public String totalRentalForOwner(int document){
  		String msj = ""; 
@@ -261,5 +246,6 @@ public class RealState {
 
  		return msj; 
  	}
+    
 
 }

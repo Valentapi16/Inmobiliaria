@@ -63,7 +63,7 @@ public class Main{
 	}
 	public void executeOption(int option){
 		String msj, fullName,idBuilding, location, bankName = "";  
-		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony,typeId, contactNumber,countNumber = 0;
+		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony,contactNumber,countNumber = 0;
 		int cellphoneType=0; 
 		boolean isThereBalcony = false;
 
@@ -169,7 +169,8 @@ public class Main{
 				}
 				System.out.println("Digit the account number");
 				countNumber = validateIntegerOption(); 
-
+                System.out.println("Enter the location that will have the apartments");
+                location = reader.next();
 				if(countNumber<0){
 					System.out.println("Only valid options"); 
 					break;
@@ -189,31 +190,97 @@ public class Main{
 				} 
 				
 	
-				msj = realState.registerOwnerToApartment(typeId, idBuilding, fullName, fullName, typeId, location, bankName, idBuilding, idApartment);
-				realState.createOwner(typeId, idBuilding, fullName, fullName, typeId, location, bankName, idBuilding, idApartment);
+				msj = realState.registerOwnerToApartment(typeId, idBuilding, fullName, fullName, typePhone, location, bankName, idBuilding, idApartment);
+				realState.createOwner(typeId, idBuilding, fullName, fullName, typePhone, location, bankName, idBuilding, idApartment);
 				
 				System.out.println(msj);
 
 				break;
 
 			case 4:
+                System.out.println("Digit the typeId, 1 CC, 2 NIT, 3 NIP, 4 CE, 5 Other"); 
+                typeId= validateIntegerOption(); 
 
-				
+                if(typeId >5 || typeId <=0){
+                System.out.println("Only valid options\n");
+                break;
+                }
+				System.out.println("type the document number ");
+				id = validateIntegerOption();
 
+				if(id<0){
+					System.out.println("enter a valid option.... xD"); 
+					break;
 
+				}
+				System.out.println("type the tenant name ");
+				fullName = reader.next();
+				System.out.println("Type cellphone number");
+				contactNumber = validateIntegerOption();
+				if(contactNumber<0){
+					System.out.println("enter a valid option.... xD"); 
+					break;
+
+				}
+				System.out.println("type the cellphone type, 1 home, 2 office, 3 movil, 4 family, 5 other"); 
+				typePhone= validateIntegerOption(); 
+
+				if(typePhone >5 || typePhone <=0){
+					System.out.println("this isnot a valid option\n");
+					break;
+				}
+
+				System.out.println("type the building id where is the apartment");
+				idBuilding= reader.next();
+				System.out.println("type the apartment id.");
+				idApartment = validateIntegerOption();
+
+				if(idApartment<0){
+					System.out.println("enter a valid option.... xD"); 
+					break;
+
+				}
+
+				msj = realState.registerTenantToApartment(typeId, idBuilding, fullName, bankName, typePhone, idBuilding, idApartment);
+				System.out.println(msj); 
 				break;
 
 			case 5:
-				
+             System.out.println("number of apartments available\n");
+             System.out.println("type id building");
+             idBuilding = reader.next(); 
+
+             msj = realState.availableApartments(idBuilding);
+             System.out.println(msj);
 
 				break; 
 
 			case 6:
+                System.out.println(" the total monthly value to receive for the apartments\n"); 
+				System.out.println("type id building");
+				idBuilding = reader.next();
+
+				msj = realState.valueByApartmentsForBuilding(idBuilding);
+				System.out.println(msj); 
+
 				
 
 				break;
 
 			case 7: 
+				System.out.println("Digit the id building of the aparment located");
+				idBuilding = reader.next();
+				System.out.println("Digit id apartment");
+				idApartment = validateIntegerOption();
+
+				if(idApartment<0){
+					System.out.println("Only valid options"); 
+					break;
+
+				}
+
+				msj = realState.avalibleApartment(idBuilding, idApartment);
+				System.out.println(msj); 
 				
 
 				break;
@@ -236,10 +303,7 @@ public class Main{
 				break; 
 		}
 	}
-	/**
-	 * validateIntegerOption: this method validates that the option entered by the user is actually an integer data type
-	 * @return option: is a int option. 
-	 */
+	
 	public int validateIntegerOption(){
 		int option = 0; 
 
@@ -247,7 +311,7 @@ public class Main{
 			option = reader.nextInt(); 
 		}
 		else{
-			// clear reader. 
+ 
 			reader.nextLine(); 
 			option = -1; 
 		}
