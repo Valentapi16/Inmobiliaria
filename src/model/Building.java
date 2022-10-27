@@ -61,4 +61,78 @@ public class Building {
 
 		return msj; 
 	}
+
+    public String addTenantWithObject(Tenant tenant, int idApartment){
+
+		String msj = "Maximum capacity reached in this Building."; 
+		boolean isEmpty = false; 
+		for(int i = 0; i <ALL_APARTMENTS && !isEmpty; i++){
+			if(apartments[i] != null && apartments[i].getIdApartment() == idApartment){
+				apartments[i].setTenant(tenant);
+				isEmpty = true; 
+				msj = "The new Tenant has been register"; 
+			} else{
+				msj = "This Tenant does not exist"; 
+			}
+		}
+
+		return msj; 
+	}
+    public int amountAvalible(){
+		int amount =0; 
+		for(int i=0; i < ALL_APARTMENTS; i++){
+			if(apartments[i] == null){
+				amount++; 
+			}
+		}
+		return amount; 
+	}
+	/**
+	 * valueByApartments: tells us the value for apartments 
+	 * @return int: the total price of theapartments.
+	 */
+
+	public int valueByApartments(){
+		int price = 0; 
+		for(int i=0;i <ALL_APARTMENTS; i++){
+			if(apartments[i] != null){
+				price += apartments[i].getMonthlyValue(); 
+			}
+		}
+		return price; 
+	}
+	/**
+	 * avalibleApartment: say if a specific apartment is available or not . 
+	 * @param idApartment: int: is the id of the apartment.
+	 * @return msj: String: a confirm message.
+	 */
+
+	public String availableApto(int idApartment){
+		String msj = ""; 
+		int posApartment = searchApartment(idApartment); 
+		if(posApartment < 0){
+			msj = "this apartment does not exist"; 
+		} else if( apartments[posApartment] != null &&  apartments[posApartment].getTenant() == null){
+			msj= "the apartment is available";
+		} else{
+			msj = "the apartment isnot available"; 
+		}
+
+		return msj; 
+
+	}
+
+	public int searchApartment(int idApartment){
+		int pos = -1; 
+		boolean isFound = false; 
+		for(int i = 0; i < ALL_APARTMENTS && !isFound; i++ ){
+			if( apartments[i] != null && apartments[i].getIdApartment() == idApartment){
+				pos = i; 
+				isFound = true; 
+
+			}
+		}
+
+		return pos; 
+	}
 }

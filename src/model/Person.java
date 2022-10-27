@@ -2,7 +2,7 @@ package model;
 
 public class Person {
 
-    public String typeId;
+    public int typeId;
     public String id;
     public String fullName;
     public String contactNumber;
@@ -10,7 +10,7 @@ public class Person {
     private String idBuilding;
     private int idApartment;
 
-    public Person(String typeId, String id, String fullName, String contactNumber, TypePhone typePhone, String idBuilding, int idApartment){
+    public Person(int typeId, String id, String fullName, String contactNumber, TypePhone typePhone, String idBuilding, int idApartment){
         this.typeId = typeId;
         this.id = id;
         this.fullName = fullName;
@@ -20,7 +20,8 @@ public class Person {
         this.idApartment = idApartment;
     }
 
-    public void getTypeId(){
+    public int getTypeId(){
+        return typeId;
 
     }
 
