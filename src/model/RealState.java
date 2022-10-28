@@ -115,7 +115,7 @@ public class RealState {
         return msj;
     }
 
-    public String createOwner(int typeId, String id, String fullName, String contactNumber, int typePhone, String countNumber, String bankName, String idBuilding, int idApartment){
+    public String createOwner(int typeId, int id, String fullName, String contactNumber, int typePhone, int countNumber, String bankName, String idBuilding, int idApartment){
 
         String msj ="It is not possible to register an owner";
         boolean isEmpty = false;
@@ -132,7 +132,7 @@ public class RealState {
         return msj;
     }
 
-    public String registerOwnerToApartment(int typeId, String id, String fullName, String contactNumber, int typePhone, String countNumber, String bankName, String idBuilding, int idApartment){
+    public String registerOwnerToApartment(int typeId, int id, String fullName, String contactNumber, int typePhone, int countNumber, String bankName, String idBuilding, int idApartment){
         String msj = "";
         setTypePhone(typePhone);
         TypePhone phone= getTypePhone();
@@ -146,7 +146,7 @@ public class RealState {
         return msj;
     }
 
-    public String createTenant(int typeId, String id, String fullName, String contactNumber, int typePhone,String idBuilding, int idApartment){
+    public String createTenant(int typeId, int id, String fullName, String contactNumber, int typePhone,String idBuilding, int idApartment){
 
         String msj ="It is not possible to register an owner";
         boolean isEmpty = false;
@@ -162,7 +162,7 @@ public class RealState {
         }
         return msj;
     }
-    public String registerTenantToApartment(int typeId, String id, String fullName, String contactNumber, int typePhone, String idBuilding, int idApartment){
+    public String registerTenantToApartment(int typeId, int id, String fullName, String contactNumber, int typePhone, String idBuilding, int idApartment){
         String msj = "";
         setTypePhone(typePhone);
         TypePhone phone= getTypePhone();

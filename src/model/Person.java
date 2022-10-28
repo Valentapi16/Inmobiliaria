@@ -3,14 +3,14 @@ package model;
 public class Person {
 
     public int typeId;
-    public String id;
+    public int id;
     public String fullName;
     public String contactNumber;
     public TypePhone typePhone;
     private String idBuilding;
     private int idApartment;
 
-    public Person(int typeId, String id, String fullName, String contactNumber, TypePhone typePhone, String idBuilding, int idApartment){
+    public Person(int typeId, int id, String fullName, String contactNumber, TypePhone typePhone, String idBuilding, int idApartment){
         this.typeId = typeId;
         this.id = id;
         this.fullName = fullName;
@@ -25,7 +25,7 @@ public class Person {
 
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 
