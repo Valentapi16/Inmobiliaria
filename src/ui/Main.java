@@ -62,7 +62,6 @@ public class Main{
 	public void executeOption(int option){
 		String msj, fullName,idBuilding, location, bankName = "";  
 		int idApartment,id,typePhone,typeId,monthlyValue,numberOfRooms, numberOfBathRooms,balcony = 0;
-
 		long contactNumber, countNumber = 0;
 		boolean isThereBalcony = false;
 
@@ -84,7 +83,6 @@ public class Main{
 				idBuilding = reader.next();
 				System.out.println("Enter the apartment id:");
 				idApartment = validateIntegerOption();
-				System.out.println(idApartment);
 				if(idApartment<0){
 					System.out.println("enter a valid option.... xD"); 
 					break;
@@ -138,11 +136,10 @@ public class Main{
                System.out.println("Digit the typeId, 1 CC, 2 NIT, 3 NIP, 4 CE, 5 Other"); 
                 typeId= validateIntegerOption(); 
 
-                if(typeId > 5 || typeId <=0){
+                if(typeId >5 || typeId <=0){
                 System.out.println("Only valid options\n");
                 break;
                 }
- 
 				System.out.println("Digit the identification number: ");
 				id = validateIntegerOption();
 
@@ -153,9 +150,8 @@ public class Main{
 				}
 				System.out.println("Which is the name of the owner: \n");
 				fullName = reader.next();
-
 				System.out.println("Digit the contact number:");
-				contactNumber = validateLongOption();
+				contactNumber = validateIntegerOption();
 
 				if(contactNumber<0){
 					System.out.println("Only valid options"); 
@@ -193,7 +189,6 @@ public class Main{
 				
 	
 				msj = realState.registerOwnerToApartment(typeId, id, fullName, location, typePhone, balcony, bankName, idBuilding, idApartment);
-
 				realState.createOwner(typeId, id, fullName, location, typePhone, balcony, bankName, idBuilding, idApartment);
 				
 				System.out.println(msj);
@@ -303,24 +298,6 @@ public class Main{
 
 		if(reader.hasNextInt()){
 			option = reader.nextInt(); 
-		}
-		else{
- 
-			reader.nextLine(); 
-			option = -1; 
-		}
-
-		return option; 
-	}
-
-
-	// este método valida si la entrada del 
-	// reader es un tipo de dato long 
-	public long validateLongOption(){
-		long option = 0; 
-
-		if(reader.hasNextLong()){
-			option = reader.nextLong(); 
 		}
 		else{
  
